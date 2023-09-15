@@ -11,19 +11,35 @@ return new class extends Migration
      */
     public function up(): void
     {
+
+        Schema::create('structures', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('nom')->unique();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
         Schema::create('matieres', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nom');
+            $table->string('abreviation');
+            $table->uuid('structure_id');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('structure_id')->references('id')->on('structures');
         });
 
         Schema::create('classes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nom');
             $table->integer('abreviation');
+            $table->uuid('classe_id');
+            $table->uuid('structure_id');
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('structure_id')->references('id')->on('structures');
         });
 
         Schema::create('classes_matieres', function (Blueprint $table) {
