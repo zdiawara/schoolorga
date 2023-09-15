@@ -11,22 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('annees_scolaires', function (Blueprint $table) {
+        Schema::create('matieres', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nom');
+            $table->softDeletes();
+            $table->timestamps();
         });
 
         Schema::create('classes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nom');
             $table->integer('abreviation');
-            $table->timestamps();
-        });
-
-        Schema::create('matieres', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->string('nom');
+            $table->softDeletes();
             $table->timestamps();
         });
 
@@ -35,20 +31,25 @@ return new class extends Migration
             $table->uuid('classe_id');
             $table->uuid('matiere_id');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('classe_id')->references('id')->on('classes');
             $table->foreign('matiere_id')->references('id')->on('matieres');
         });
 
+        Schema::create('annees_scolaires', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('nom');
+        });
 
-        Schema::create('enseignements', function (Blueprint $table) {
+        /* Schema::create('enseignements', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('classe_id');
             $table->uuid('matiere_id');
             $table->uuid('enseignant_id');
             $table->uuid('annee_scolaire_id');
-
             $table->timestamps();
+            $table->softDeletes();
         });
 
 
@@ -118,7 +119,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('classe_id')->references('id')->on('classes');
-        });
+        }); */
     }
 
     /**

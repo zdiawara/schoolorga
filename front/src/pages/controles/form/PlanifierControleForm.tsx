@@ -4,8 +4,6 @@ import { PageHeader } from "pages/common";
 import {
   DatePicker,
   Select,
-  SelectGenre,
-  SelectPersonne,
   TextInput,
 } from "components";
 import { WrapperProps, withForm } from "hoc";

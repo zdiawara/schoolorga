@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   main:
-    container_name: scoutisme.serve
+    container_name: schoolorga.server
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,10 +10,10 @@ services:
       - ./:/var/www/html/
       - ./docker/index.php:/var/www/html/public/index.php
     ports:
-      - "9025:8000"
+      - "9030:8000"
 
   queue:
-    container_name: scoutisme.queue
+    container_name: schoolorga.queue
     build:
       context: .
       dockerfile: Dockerfile
@@ -24,22 +24,22 @@ services:
   db:
     platform: linux/x86_64
     image: mysql:8.0
-    container_name: scoutisme.db
+    container_name: schoolorga.db
     environment:
-      MYSQL_DATABASE: scoutisme
+      MYSQL_DATABASE: schoolorga
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - db:/var/lib/mysql
+      - db_schoolorga:/var/lib/mysql
     ports:
-      - "3320:3306"
+      - "3340:3306"
 
   mailpit:
     image: axllent/mailpit
-    container_name: scoutisme.mail
+    container_name: schoolorga.mail
     ports:
-      - "1025:1025"
-      - "8025:8025"
+      - "1525:1025"
+      - "7025:8025"
 
 volumes:
-  db:
+  db_schoolorga:
     driver: local
