@@ -23,20 +23,19 @@ export const HookModalForm: FC<UtilitaireModalProps> = ({
     size: "lg",
   },
   modalHeaderProps,
-  modalBodyClassName = "bg-light",
-  onClose,
+  modalBodyClassName = "bg-modal",
   renderButtons,
   onSubmit,
   children,
 }) => {
   return (
-    <Modal {...modalProps} show={true}>
-      <Form onSubmit={onSubmit}>
+    <Modal.Dialog>
+      <Modal {...modalProps} show={true}>
         {title && (
           <Modal.Header {...modalHeaderProps}>
             <div>
               <Modal.Title
-                className={classNames("text-black", { "my-0": !!subtitle })}
+                className={classNames("text-primary", { "my-0": !!subtitle })}
               >
                 {title}
               </Modal.Title>
@@ -46,7 +45,7 @@ export const HookModalForm: FC<UtilitaireModalProps> = ({
         )}
         <Modal.Body className={modalBodyClassName}>{children}</Modal.Body>
         <Modal.Footer>{renderButtons()}</Modal.Footer>
-      </Form>
-    </Modal>
+      </Modal>
+    </Modal.Dialog>
   );
 };

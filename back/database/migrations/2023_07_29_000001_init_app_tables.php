@@ -20,9 +20,7 @@ return new class extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nom');
-            $table->integer('effectif_max')->nullable();
-            $table->integer('frais')->nullable();
-
+            $table->integer('abreviation');
             $table->timestamps();
         });
 

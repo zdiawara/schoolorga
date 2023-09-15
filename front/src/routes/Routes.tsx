@@ -1,17 +1,13 @@
 import { Suspense, lazy } from "react";
 import {
+  Outlet,
   Route,
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
 import { Layout } from "layout";
 import { LINKS } from "utils";
-import {
-  FonctionOutlet,
-  OrganisationOutlet,
-  PersonneOutlet,
-} from "./FilterOutlet";
-import { organisationApi, personneApi } from "api";
+import { ClasseOutlet, PersonneOutlet } from "./FilterOutlet";
 
 const loading = () => <div className=""></div>;
 
@@ -22,65 +18,73 @@ export const Loadable = (Component: any) => (props: any) =>
     </Suspense>
   );
 
-const ListPersonne = Loadable(
-  lazy(() => import("pages/personnes/ListPersonne"))
-);
-const ViewPersonne = Loadable(
-  lazy(() => import("pages/personnes/ViewPersonne"))
-);
-const CreatePersonne = Loadable(
-  lazy(() => import("pages/personnes/CreatePersonne"))
-);
-const EditPersonne = Loadable(
-  lazy(() => import("pages/personnes/EditPersonne"))
+const ListClasse = Loadable(
+  lazy(() => import("pages/academies/classes/ListClasse"))
 );
 
-const ListOrganisation = Loadable(
-  lazy(() => import("pages/organisations/ListOrganisation"))
-);
-const CreateOrganisation = Loadable(
-  lazy(() => import("pages/organisations/CreateOrganisation"))
-);
-const EditOrganisation = Loadable(
-  lazy(() => import("pages/organisations/EditOrganisation"))
-);
-const ViewOrganisation = Loadable(
-  lazy(() => import("pages/organisations/ViewOrganisation"))
+const ListEtablissement = Loadable(
+  lazy(() => import("pages/academies/etablissements/ListEtablissement"))
 );
 
-const ListFonction = Loadable(
-  lazy(() => import("pages/utilitaires/fonctions/ListFonction"))
+const ListMatiere = Loadable(
+  lazy(() => import("pages/academies/matieres/ListMatiere"))
+);
+
+const ListAnneeScolaire = Loadable(
+  lazy(() => import("pages/academies/annes-scolaires/ListAnneeScolaire"))
+);
+
+const ListStudent = Loadable(lazy(() => import("pages/students/ListPersonne")));
+const CreateStudent = Loadable(
+  lazy(() => import("pages/students/CreatePersonne"))
+);
+
+const EmploiDuTemps = Loadable(
+  lazy(() => import("pages/emploi-du-temps/EmploiDuTemps"))
+);
+
+const ListControle = Loadable(
+  lazy(() => import("pages/controles/ListControle"))
+);
+const PlanifierControle = Loadable(
+  lazy(() => import("pages/controles/PlanifierControle"))
+);
+const NoteControle = Loadable(
+  lazy(() => import("pages/controles/NoteControle"))
 );
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path={LINKS.personnes.base} element={<PersonneOutlet />}>
-        <Route index element={<ListPersonne />} />
-        <Route element={<CreatePersonne />} path="create" />
-        <Route element={<ViewPersonne />} path=":id" />
-        <Route
-          element={<EditPersonne />}
-          path=":id/edit"
-          loader={({ params }) => {
-            return personneApi.findById(params.id!);
-          }}
-        />
+      <Route path={LINKS.classes.base} element={<ClasseOutlet />}>
+        <Route index element={<ListClasse />} />
       </Route>
-      <Route path={LINKS.organisations.base} element={<OrganisationOutlet />}>
-        <Route index element={<ListOrganisation />} />
-        <Route element={<CreateOrganisation />} path="create" />
-        <Route element={<ViewOrganisation />} path=":id" />
-        <Route
-          element={<EditOrganisation />}
-          path=":id/edit"
-          loader={({ params }) => {
-            return organisationApi.findById(params.id!);
-          }}
-        />
+      <Route path={LINKS.etablissements.base} element={<ClasseOutlet />}>
+        <Route index element={<ListEtablissement />} />
       </Route>
-      <Route path={LINKS.fonctions.base} element={<FonctionOutlet />}>
-        <Route index element={<ListFonction />} />
+      <Route path={LINKS.etablissements.base} element={<Outlet />}>
+        <Route index element={<ListEtablissement />} />
+      </Route>
+      <Route path={LINKS.matieres.base} element={<Outlet />}>
+        <Route index element={<ListMatiere />} />
+      </Route>
+      <Route path={LINKS.annees_scolaires.base} element={<Outlet />}>
+        <Route index element={<ListAnneeScolaire />} />
+      </Route>
+
+      <Route path={LINKS.students.base} element={<PersonneOutlet />}>
+        <Route index element={<ListStudent />} />
+        <Route path={LINKS.students.create} element={<CreateStudent />} />
+      </Route>
+
+      <Route path={LINKS.emploi_du_temps.base} element={<Outlet />}>
+        <Route index element={<EmploiDuTemps />} />
+      </Route>
+
+      <Route path={LINKS.controles.base} element={<Outlet />}>
+        <Route index element={<ListControle />} />
+        <Route path={LINKS.controles.create} element={<PlanifierControle />} />
+        <Route path={LINKS.controles.note} element={<NoteControle />} />
       </Route>
     </Route>
   )

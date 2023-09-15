@@ -25,7 +25,7 @@ const Container: FC<{ children: ReactNode; isLoading: boolean }> = ({
 
   return (
     <Card>
-      <Card.Body>{children}</Card.Body>
+      <Card.Body className="p-0">{children}</Card.Body>
     </Card>
   );
 };
@@ -34,6 +34,7 @@ export type Columns<T> = {
   name: string;
   label: string;
   Cell?: (row: T, j: number) => ReactNode;
+  headClassName?: string;
 };
 
 type TableProps<T> = {
@@ -44,11 +45,13 @@ type TableProps<T> = {
 function Table<T>({ columns, data }: TableProps<T>) {
   return (
     <>
-      <BsTable className="table-centered">
-        <thead className="text-black ">
+      <BsTable className="table-centered mb-0">
+        <thead className="text-black bg-light">
           <tr>
-            {columns.map((col) => (
-              <th key={col.name}>{col.label}</th>
+            {columns.map((col, i) => (
+              <th key={col.name} className={col.headClassName}>
+                {col.label}
+              </th>
             ))}
           </tr>
         </thead>

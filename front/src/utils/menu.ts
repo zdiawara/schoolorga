@@ -1,4 +1,5 @@
 import { MenuItemType } from "../appConstants";
+import { LINKS } from "./links";
 
 export const MENU_ITEMS = [
   {
@@ -7,37 +8,42 @@ export const MENU_ITEMS = [
     isTitle: false,
     url: "/",
   },
+
   {
-    key: "personnes",
-    label: "Elèves",
+    key: "eleves",
+    label: "Eleves",
+    isTitle: true,
+  },
+
+  {
+    key: "eleves-inscription",
+    label: "Inscriptions",
+    isTitle: false,
+    url: LINKS.students.create,
+  },
+  {
+    key: "eleve-rechercher",
+    label: "Rechercher",
+    isTitle: false,
+    url: LINKS.students.base,
+  },
+  {
+    key: "eleve-notes",
+    label: "Notes",
     isTitle: false,
     url: "/",
-    children: [
-      {
-        key: "eleves-inscription",
-        label: "Inscriptions",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "eleve-recherche",
-        label: "Recherche",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "eleve-notes",
-        label: "Notes",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "eleves-bulletins",
-        label: "Bulletins",
-        isTitle: false,
-        url: "/",
-      },
-    ],
+  },
+  {
+    key: "eleves-bulletins",
+    label: "Bulletins",
+    isTitle: false,
+    url: "/",
+  },
+  {
+    key: "rh",
+    label: "Resources humaines",
+    isTitle: true,
+    url: "/",
   },
   {
     key: "personnels",
@@ -51,12 +57,7 @@ export const MENU_ITEMS = [
     isTitle: false,
     url: "/",
   },
-  {
-    key: "emplois",
-    label: "Emplois du temps",
-    isTitle: false,
-    url: "/",
-  },
+
   {
     key: "frais",
     label: "Gestion des frais",
@@ -66,86 +67,91 @@ export const MENU_ITEMS = [
   {
     key: "emargement",
     label: "Emargements",
+    isTitle: true,
+  },
+
+  {
+    key: "eleve",
+    label: "Eleves",
     isTitle: false,
     url: "/",
-    children: [
-      {
-        key: "eleve",
-        label: "Eleves",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "personnel",
-        label: "Personnels",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "enseignant",
-        label: "Enseignants",
-        isTitle: false,
-        url: "/",
-      },
-    ],
   },
   {
-    key: "controle",
-    label: "Contrôles",
+    key: "personnel",
+    label: "Personnels",
     isTitle: false,
     url: "/",
-    children: [
-      {
-        key: "create",
-        label: "Tous",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "planin",
-        label: "Planifier",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "assigner",
-        label: "Résultat",
-        isTitle: false,
-        url: "/",
-      },
-    ],
+  },
+  {
+    key: "enseignant",
+    label: "Enseignants",
+    isTitle: false,
+    url: "/",
+  },
+  {
+    key: "controles",
+    label: "Controles",
+    isTitle: true,
+  },
+  {
+    key: "all-controle",
+    label: "Tous les controles",
+    isTitle: false,
+    url: LINKS.controles.base,
+  },
+  {
+    key: "planin",
+    label: "Planifier un controle",
+    isTitle: false,
+    url: LINKS.controles.create,
+  },
+  {
+    key: "note-controle",
+    label: "Note controles",
+    isTitle: false,
+    url: LINKS.controles.note,
   },
   {
     key: "academie",
     label: "Academie",
+    isTitle: true,
+  },
+  {
+    key: "matiere",
+    label: "Gestion matières",
     isTitle: false,
-    url: "/",
-    children: [
-      {
-        key: "classe",
-        label: "Classes",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "matiere",
-        label: "Matières",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "assiger",
-        label: "Assignement",
-        isTitle: false,
-        url: "/",
-      },
-      {
-        key: "annee",
-        label: "Année scolaire",
-        isTitle: false,
-        url: "/",
-      },
-    ],
+    url: LINKS.matieres.base,
+  },
+  {
+    key: "classe",
+    label: "Gestion classes",
+    isTitle: false,
+    url: LINKS.classes.base,
+  },
+  {
+    key: "etablissements",
+    label: "Etablissements",
+    isTitle: false,
+    url: LINKS.etablissements.base,
+  },
+
+  {
+    key: "annee",
+    label: "Année scolaire",
+    isTitle: false,
+    url: LINKS.annees_scolaires.base,
+  },
+
+  {
+    key: "emplois",
+    label: "Emplois du temps",
+    isTitle: false,
+    url: LINKS.emploi_du_temps.base,
+  },
+  {
+    key: "rapport",
+    label: "Reporting",
+    isTitle: true,
   },
   {
     key: "repport",

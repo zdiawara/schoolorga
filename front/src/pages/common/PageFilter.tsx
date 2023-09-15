@@ -30,20 +30,17 @@ const Search: FC<SearchProps> = ({ initialValue, onChange }) => {
   };
 
   return (
-    <div className="app-search">
-      <InputGroup>
-        <Form.Control
-          className="text-black"
-          placeholder="Rechercher ..."
-          onChange={handleChange}
-          value={search}
-        />
-        <span className="mdi mdi-magnify search-icon"></span>
-        <Button variant="secondary" onClick={onSubmit}>
-          Rechercher
-        </Button>
-      </InputGroup>
-    </div>
+    <InputGroup>
+      <Form.Control
+        className="text-black"
+        placeholder="Rechercher ..."
+        onChange={handleChange}
+        value={search}
+      />
+      <Button variant="secondary" onClick={onSubmit}>
+        Rechercher
+      </Button>
+    </InputGroup>
   );
 };
 

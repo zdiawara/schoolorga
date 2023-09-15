@@ -9,7 +9,5 @@ class Ville extends Model
 {
     use UUID;
 
-    protected $fillable = [
-        'code', 'nom'
-    ];
+    protected $fillable = ['nom'];
 }

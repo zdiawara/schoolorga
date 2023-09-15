@@ -44,7 +44,7 @@ export const OrganisationMembres: FC<OrganisationMembresProps> = ({
     }
     return (
       <table className="table mt-3 mb-0">
-        <thead className="bg-secondary-lighten text-black">
+        <thead className="text-black">
           <tr>
             <th>Nom</th>
             <th>Fonction</th>
@@ -78,7 +78,7 @@ export const OrganisationMembres: FC<OrganisationMembresProps> = ({
                         }}
                       />
                     ) : (
-                      <span className="avatar-title bg-primary-lighten text-primary fs-4 rounded-circle">
+                      <span className="avatar-title bg-secondary-lighten text-secondary fs-4 rounded-circle">
                         {attribution.personne.prenom[0]}
                         {attribution.personne.nom[0]}
                       </span>
@@ -111,8 +111,8 @@ export const OrganisationMembres: FC<OrganisationMembresProps> = ({
     <Card>
       <Card.Body>
         <View.Header
-          icon={ICONS.personne}
-          label="Membres"
+          icon={ICONS.direction}
+          label="Organe de direction"
           description="Membres de l'organe de direction"
           className="mb-2"
           right={<OrganisationMembreActions organisation={organisation} />}

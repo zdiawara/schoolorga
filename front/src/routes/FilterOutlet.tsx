@@ -31,7 +31,7 @@ export const OrganisationOutlet = () => {
   );
 };
 
-export const FonctionOutlet = () => {
+export const ClasseOutlet = () => {
   const filter: FonctionFilter = {
     search: "",
   };

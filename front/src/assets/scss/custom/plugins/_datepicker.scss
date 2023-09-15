@@ -5,18 +5,18 @@
 $datepicker__background-color: $dropdown-bg;
 $datepicker__border-color: $dropdown-border-color;
 $datepicker__highlighted-color: $primary;
-$datepicker__muted-color: #{map-get($grays, "600")};
+$datepicker__muted-color: #{map-get($grays, "700")};
 $datepicker__selected-color: $primary;
-$datepicker__text-color: #{map-get($grays, "600")};
-$datepicker__header-color: #{map-get($grays, "600")};
+$datepicker__text-color: #{map-get($grays, "800")};
+$datepicker__header-color: #{map-get($grays, "900")};
 $datepicker__navigation-disabled-color: #{lighten(map-get($grays, "600"), 10%)};
 
-$datepicker__border-radius: 0.3rem;
-$datepicker__day-margin: 0.166rem;
+$datepicker__border-radius: 0.35rem;
+$datepicker__day-margin: 0.2rem;
 $datepicker__font-size: $font-size-base;
 $datepicker__font-family: $font-family-base;
 
-$datepicker__item-size: 1.5rem;
+$datepicker__item-size: 2rem;
 $datepicker__margin: 0.4rem;
 $datepicker__navigation-size: 0.45rem;
 $datepicker__triangle-size: 8px;
@@ -82,7 +82,7 @@ $datepicker__triangle-size: 8px;
 }
 
 .react-datepicker-wrapper {
-  display: block;
+  display: block !important;
 }
 
 .react-datepicker {
@@ -94,6 +94,7 @@ $datepicker__triangle-size: 8px;
   border-radius: $datepicker__border-radius;
   display: inline-block;
   position: relative;
+  box-shadow: $box-shadow-sm;
 }
 
 .react-datepicker--time-only {
@@ -154,22 +155,6 @@ $datepicker__triangle-size: 8px;
       left: 42px;
       right: auto;
     }
-  }
-}
-
-.react-datepicker__header {
-  text-align: center;
-  background-color: $datepicker__background-color;
-  border-bottom: 1px solid $datepicker__border-color;
-  border-top-left-radius: $datepicker__border-radius;
-  border-top-right-radius: $datepicker__border-radius;
-  padding-top: 8px;
-  position: relative;
-
-  &--time {
-    padding-bottom: 8px;
-    padding-left: 5px;
-    padding-right: 5px;
   }
 }
 
@@ -783,7 +768,10 @@ body[data-layout-color="dark"] {
   $datepicker__muted-color: #{map-get($dark-grays, "600")};
   $datepicker__text-color: #{map-get($dark-grays, "600")};
   $datepicker__header-color: #{map-get($dark-grays, "600")};
-  $datepicker__navigation-disabled-color: #{lighten(map-get($dark-grays, "600"), 10%)};
+  $datepicker__navigation-disabled-color: #{lighten(
+      map-get($dark-grays, "600"),
+      10%
+    )};
   .react-datepicker__navigation {
     &--previous {
       &:hover {
